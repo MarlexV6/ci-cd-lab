@@ -24,8 +24,8 @@ jobs:
 
       - name: Install geckodriver
         run: |
-          wget -q https://github.com/mozilla/geckodriver/releases/latest/download/geckodriver-linux64.tar.gz
-          tar -xvzf geckodriver-linux64.tar.gz
+          wget https://github.com/mozilla/geckodriver/releases/download/v0.34.0/geckodriver-v0.34.0-linux64.tar.gz
+          tar -xvzf geckodriver-v0.34.0-linux64.tar.gz
           sudo mv geckodriver /usr/local/bin/
           sudo chmod +x /usr/local/bin/geckodriver
 
