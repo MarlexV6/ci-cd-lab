@@ -9,6 +9,9 @@ beforeAll(async () => {
     driver = await new Builder()
         .forBrowser('firefox')
         .setFirefoxOptions(options)
+        .setFirefoxService(
+            new firefox.ServiceBuilder('/usr/local/bin/geckodriver')
+        )
         .build();
 
     await driver.get('file://' + __dirname + '/../index.html');

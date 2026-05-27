@@ -31,3 +31,10 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+
+      - name: Verify drivers
+        run: |
+          which firefox
+          which geckodriver
+          geckodriver --version
