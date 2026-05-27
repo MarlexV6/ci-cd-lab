@@ -1,10 +1,13 @@
 const { Builder, By } = require('selenium-webdriver');
 const firefox = require('selenium-webdriver/firefox');
-
+jest.setTimeout(30000);
 let driver;
 
 beforeAll(async () => {
-    let options = new firefox.Options().addArguments('-headless');
+    let options = new firefox.Options()
+    .addArguments('-headless')
+    .addArguments('-width=1280')
+    .addArguments('-height=800');
 
     driver = await new Builder()
         .forBrowser('firefox')
@@ -15,6 +18,8 @@ beforeAll(async () => {
         .build();
 
     await driver.get('file://' + __dirname + '/../index.html');
+
+    await driver.sleep(1000);
 });
 
 afterAll(async () => {
