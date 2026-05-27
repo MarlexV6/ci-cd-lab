@@ -15,7 +15,7 @@
   "type": "commonjs",
   "main": "script.js",
   "scripts": {
-  "test": "npx jest"
+  "test": "node ./node_modules/jest/bin/jest.js"
 },
   "dependencies": {
     "chromedriver": "^148.0.1",
