@@ -15,7 +15,7 @@
   "type": "commonjs",
   "main": "script.js",
   "scripts": {
-  "test": "node ./node_modules/jest/bin/jest.js"
+  "test": "jest"
 },
   "dependencies": {
     "chromedriver": "^148.0.1",
