@@ -4,7 +4,6 @@ const firefox = require('selenium-webdriver/firefox');
 let driver;
 
 beforeAll(async () => {
-
     let options = new firefox.Options();
 
     driver = await new Builder()
@@ -16,7 +15,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-    await driver.quit();
+    if (driver) await driver.quit();
 });
 
 test('Проверка заголовка', async () => {
