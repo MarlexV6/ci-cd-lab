@@ -4,7 +4,7 @@ const firefox = require('selenium-webdriver/firefox');
 let driver;
 
 beforeAll(async () => {
-    let options = new firefox.Options();
+    let options = new firefox.Options().addArguments('-headless');
 
     driver = await new Builder()
         .forBrowser('firefox')

@@ -1,46 +1,33 @@
-name: CI/CD Pipeline
+name: Tests
 
-on:
-  push:
-    branches:
-      - main
-      - dev
-      - fix/**
-  pull_request:
-    branches:
-      - main
-      - dev
+on: [push]
 
 jobs:
-
   test:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Install Firefox
         run: |
           sudo apt-get update
           sudo apt-get install -y firefox
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install geckodriver
+        run: |
+          wget -q https://github.com/mozilla/geckodriver/releases/latest/download/geckodriver-linux64.tar.gz
+          tar -xvzf geckodriver-linux64.tar.gz
+          sudo mv geckodriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/geckodriver
 
       - name: Run tests
         run: npm test
-
-      - name: Install geckodriver
-        run: |
-          sudo apt-get install -y firefox-geckodriver || true
-
-
-      - name: Set geckodriver path
-        run: echo "GECKODRIVER=$(which geckodriver)" >> $GITHUB_ENV
