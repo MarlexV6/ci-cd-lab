@@ -2,17 +2,32 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>CI/CD Lab</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестовая Форма - Лабораторная 11</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        form { max-width: 400px; }
+        input, button { margin: 10px 0; padding: 8px; width: 100%; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
 </head>
 <body>
+<h1>Форма обратной связи v2 (исправлено)</h1>
+    <form id="feedbackForm">
+        <input type="text" id="name" placeholder="Ваше имя" required>
+        <input type="email" id="email" placeholder="Ваш email" required>
+        <textarea id="message" placeholder="Сообщение" rows="4" required></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+    <div id="result"></div>
 
-<h1 id="title">Форма входа</h1>
-
-<input type="text" placeholder="Введите имя" id="name">
-
-<button id="btn">Отправить</button>
-
-<script src="script.js"></script>
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            document.getElementById('result').innerHTML = 
+                `Спасибо, ${name}! Форма успешно отправлена (симуляция).`;
+        });
+    </script>
 </body>
 </html>
